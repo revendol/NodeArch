@@ -1,0 +1,24 @@
+// import { Request, Response } from 'express';
+// import { StatusCodes } from 'http-status-codes';
+// import ErrorMessage from "@shared/errorMessage"; // Error Messages for response
+// import logger from "@util/logger"; // Logger
+import Controller from "@controllers/Controller"; // Base Controller
+import {{{pascalCase modelName}}}Validator from "@http/validators/{{{pascalCase modelName}}}Validator"; // Import Validator
+import {{{pascalCase modelName}}}Service from "@services/{{{pascalCase modelName}}}Service"; // Import Service
+import I{{{pascalCase modelName}}} from "@models/{{{pascalCase modelName}}}";
+
+// const {
+//    INTERNAL_SERVER_ERROR,
+//    BAD_REQUEST,
+//    UNPROCESSABLE_ENTITY,
+//    OK
+// } = StatusCodes; // HTTP Status Codes
+
+class {{{pascalCase modelName}}}Controller extends Controller<I{{{pascalCase modelName}}}> {
+  constructor() {
+    super({{{pascalCase modelName}}}Service, {{{pascalCase modelName}}}Validator);
+  }
+  // Add custom methods here
+}
+
+export default new {{{pascalCase modelName}}}Controller();

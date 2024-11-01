@@ -1,0 +1,27 @@
+import {{{pascalCase modelName}}}Controller from "@controllers/{{{pascalCase modelName}}}Controller";
+import Route from '@routes/Route';
+import { generateBasePath } from "@util/helper-function";
+
+// Paths for each route
+export const p = {
+  basePath: `/${generateBasePath({{{pascalCase modelName}}}Controller.constructor.name)}`,
+} as const;
+
+// Excluded routes
+const excludedRoutes = [] as string[]; // example: ['add', 'single', 'edit', 'destroy', 'all'];
+
+// Instantiate Route with {{pascalCase modelName}}Controller
+const {{camelCase modelName}}Route = new Route({{{pascalCase modelName}}}Controller, excludedRoutes);
+
+{{camelCase modelName}}Route.registerMoreRoutes([
+  // { method: 'post', path: p.path, handlerName: 'controllerFunctionName' },
+  // {
+  //  method: 'post',
+  //  path: p.path,
+  //  handlerName: 'controllerFunctionName',
+  //  middleware: [authMiddleware]
+  // }
+]);
+
+// Export the configured router
+export default {{camelCase modelName}}Route.router;

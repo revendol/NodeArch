@@ -1,0 +1,14 @@
+import Validators from '@http/validators/Validators';
+
+class {{{pascalCase modelName}}}Validator extends Validators {
+    // Define rules for each validation type
+    private static addRules = {};
+    private static editRules = {};
+
+    constructor() {
+        super({{{pascalCase modelName}}}Validator.addRules, {{{pascalCase modelName}}}Validator.editRules);
+    }
+    // Write custom validator methods here if needed
+}
+
+export default new {{{pascalCase modelName}}}Validator();

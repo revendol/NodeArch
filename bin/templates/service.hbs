@@ -1,0 +1,12 @@
+import Service from "@services/Service";
+import {{{pascalCase modelName}}}Repo from "@repos/{{{pascalCase modelName}}}Repo";
+import { I{{{pascalCase modelName}}} } from "@models/{{{pascalCase modelName}}}";
+
+class {{{pascalCase modelName}}}Service extends Service<I{{{pascalCase modelName}}}> {
+  constructor() {
+    super({{{pascalCase modelName}}}Repo);
+  }
+  // Write custom functions here
+}
+
+export default new {{{pascalCase modelName}}}Service();

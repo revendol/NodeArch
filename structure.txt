@@ -1,0 +1,45 @@
+-- bin
+----- templates
+--------- controller.hbs
+--------- rpo.hbs
+--------- route.hbs
+--------- service.hbs
+--------- validator.hbs
+----- cli.ts
+----- cli.js
+----- plopfile.js
+-- logs
+-- specs
+-- src
+----- app
+--------- db
+------------ models
+--------------- mongoose models
+------------ repos
+--------------- Repo.ts // Base repo class that have all necessary database operation
+--------------- OtherRepo.ts // extends base repo class and can have custom operations
+--------- http
+-------------- controllers
+------------------- Controller.tsc // Base class for controller that have basic crud operation, and it can be extended by child class, and they will have this basic api functions. Also, validators can be assigned for validation
+-------------- routes
+------------------ Route.ts // Base class for routes. It has basic crud routes and provides easy way to register new routes and middlewares
+-------------- validators
+------------------ Validators.ts // Base class for validator to assign validation to controllers and create new validators
+--------- services
+-------------- Service.ts // Base service class that have all necessary operations to work with repo. Main goal of this is to keep controller structural and easy
+--------- types // Contains type declarations
+--------- util // Provide utility functions and middleware
+--------- views // Have email and pdf related html files
+----- pre-start // Contain environmental files
+----- index.ts // Starts server
+----- server.ts // Have logics for the app and all connection
+-- build.ts // Build configuration for tsc
+-- package.json
+-- tsconfig.json
+-- tsconfig.prod.json
+
+
+First a model of mongoose need to created and with command
+npx ts-node bin/cli.ts crud
+it will ask the model name and all necessary files will be created in the respective folder enabling
+developer to avoid repetitive work and focus on business logic.

@@ -1,0 +1,78 @@
+export default {
+  HTTP_CONTINUE: "Everything so far is OK.",
+  HTTP_SWITCHING_PROTOCOLS: "Switching Protocols",
+  HTTP_PROCESSING: "Server has received and is processing the request, " +
+    "but no response is available yet.",
+  HTTP_EARLY_HINTS: "Preloading resources while the server prepares a response",
+  HTTP_OK: "The request succeeded.",
+  HTTP_CREATED: "The request succeeded, and a new resource was created as a result.",
+  HTTP_ACCEPTED: "The request has been received but not yet acted upon.",
+  HTTP_NON_AUTHORITATIVE_INFORMATION: "The returned metadata is not exactly " +
+    "the same as is available from the origin server, but is collected from " +
+    "a local or a third-party copy.",
+  HTTP_NO_CONTENT: "There is no content to send for this request, " +
+    "but the headers may be useful.",
+  HTTP_RESET_CONTENT: "Please reset the document which sent this request.",
+  HTTP_PARTIAL_CONTENT: "The range header is sent from the client to " +
+    "request only part of a resource.",
+  HTTP_MULTI_STATUS: "Multiple status codes might be appropriate.",
+  HTTP_ALREADY_REPORTED: "Used inside a response element to avoid " +
+    "repeatedly enumerating the internal members of multiple bindings " +
+    "to the same collection.",
+  HTTP_IM_USED: "The server has fulfilled a GET request for the resource, " +
+    "and the response is a representation of the result of one or more " +
+    "instance-manipulations applied to the current instance.",
+  HTTP_MULTIPLE_CHOICES: "The request has more than one possible response.",
+  HTTP_MOVED_PERMANENTLY: "The URL of the requested resource has been changed permanently.",
+  HTTP_UPDATED: "The requested resource has been changed permanently.",
+  HTTP_FOUND: "The URI of requested resource has been changed temporarily",
+  HTTP_SEE_OTHER: "The request is under process, please check back later.",
+  HTTP_NOT_MODIFIED: "The requested resource has not been modified.",
+  HTTP_USE_PROXY: "Please use proxy to access the requested resource.",
+  HTTP_RESERVED: "The requested resource is reserved.",
+  HTTP_TEMPORARY_REDIRECT: "The requested resource is temporarily moved.",
+  HTTP_PERMANENTLY_REDIRECT: "The requested resource is permanently moved.",
+  HTTP_BAD_REQUEST: "Bad request. The request do not contain all necessary " +
+    "data or information. Please try again later. Thanks.",
+  HTTP_UNAUTHORIZED: "Unauthorized. Please provide valid credentials.",
+  HTTP_PAYMENT_REQUIRED: "Payment required. Please pay the required amount.",
+  HTTP_FORBIDDEN: "Forbidden. You do not have permission to access this resource.",
+  HTTP_NOT_FOUND: "The requested resource is not found.",
+  HTTP_METHOD_NOT_ALLOWED: "The request method is not allowed.",
+  HTTP_NOT_ACCEPTABLE: "The request is not acceptable.",
+  HTTP_PROXY_AUTHENTICATION_REQUIRED: "Proxy authentication required.",
+  HTTP_REQUEST_TIMEOUT: "Request timeout. Please try again later.",
+  HTTP_CONFLICT: "Conflict. The request could not be completed due to conflict.",
+  HTTP_GONE: "The requested resource is no longer available.",
+  HTTP_LENGTH_REQUIRED: "The request length is required.",
+  HTTP_PRECONDITION_FAILED: "The request is not valid.",
+  HTTP_REQUEST_ENTITY_TOO_LARGE: "The request entity is too large.",
+  HTTP_REQUEST_URI_TOO_LONG: "The request URI is too long.",
+  HTTP_UNSUPPORTED_MEDIA_TYPE: 'Media file is not supported.',
+  HTTP_REQUESTED_RANGE_NOT_SATISFIABLE: "The requested range is not satisfiable.",
+  HTTP_EXPECTATION_FAILED: "The expectation failed.",
+  HTTP_I_AM_A_TEAPOT: "I am a teapot.",
+  HTTP_MISDIRECTED_REQUEST: "The request was directed at a server that is not " +
+    "able to produce a response.",
+  HTTP_UNPROCESSABLE_ENTITY: "The request is not valid. It contains unprocessable entity.",
+  HTTP_LOCKED: "The requested resource is locked.",
+  HTTP_FAILED_DEPENDENCY: "The request failed due to dependency.",
+  HTTP_TOO_EARLY: "The request is too early.",
+  HTTP_UPGRADE_REQUIRED: "The request is required to upgrade.",
+  HTTP_PRECONDITION_REQUIRED: "The request is required to be pre-conditioned.",
+  HTTP_TOO_MANY_REQUESTS: "Too many requests. Please try again later.",
+  HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE: "The request header fields are too large.",
+  HTTP_UNAVAILABLE_FOR_LEGAL_REASONS: "The requested resource is not available for legal reasons.",
+  HTTP_INTERNAL_SERVER_ERROR: "Internal server error. Please try again later.",
+  HTTP_NOT_IMPLEMENTED: "The request is not implemented.",
+  HTTP_BAD_GATEWAY: "HTTP bad gateway",
+  HTTP_SERVICE_UNAVAILABLE: "The service is unavailable.",
+  HTTP_GATEWAY_TIMEOUT: "The gateway timeout.",
+  HTTP_VERSION_NOT_SUPPORTED: "The version is not supported.",
+  HTTP_VARIANT_ALSO_NEGOTIATES_EXPERIMENTAL: "The variant also negotiates experimental.",
+  HTTP_INSUFFICIENT_STORAGE: 'The request is not completed due to insufficient storage.',
+  HTTP_LOOP_DETECTED: "The request is detected in a loop.",
+  HTTP_NOT_EXTENDED: "The request is not extended.",
+  HTTP_NETWORK_AUTHENTICATION_REQUIRED: "The network authentication is required.",
+  CREDENTIALS_DID_NOT_MATCH: "Credentials did not match our records."
+} as const;
