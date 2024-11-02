@@ -12,7 +12,7 @@ Contains the CLI and Plop configuration files for code generation.
     - `route.hbs`: Template for routes.
     - `service.hbs`: Template for services.
     - `validator.hbs`: Template for validators.
-- `cli.ts` / `cli.js`: CLI script enabling the `npx ts-node bin/cli.ts crud` command.
+- `cli.ts` / `cli.js`: CLI script enabling the `npm run create:crud` command.
 - `plopfile.js`: Plop configuration file for defining generators.
 
 ### `logs/`
@@ -36,10 +36,11 @@ Main application source code.
             - `Route.ts`: Base route class with predefined CRUD routes and middleware support.
         - **validators/**: Input validation logic.
             - `Validators.ts`: Base validator class.
+        - **middlewares/**: Contain middlewares.
     - **services/**: Business logic layer, containing the core application logic.
         - `Service.ts`: Base class for managing repositories, enabling cleaner controllers.
     - **types/**: Type declarations for the project.
-    - **util/**: Utility functions and middleware.
+    - **util/**: Utility functions.
     - **views/**: Contains email templates and PDF generation HTML files.
 
 ### `pre-start/`
@@ -54,7 +55,7 @@ Application setup, including middleware, database connection, and server configu
 ## Key Features
 
 ### 1. Code Generation
-Run the command `npx ts-node bin/cli.ts crud` to auto-generate files for CRUD operations, reducing repetitive work.
+Run the command `npm run create:crud` to auto-generate files for CRUD operations, reducing repetitive work.
 
 ### 2. Base Classes
 - **Controllers**: Abstracted CRUD operations in `Controller.ts`, extendable for custom methods.
@@ -72,7 +73,7 @@ Winston logger is configured for structured logging across the application.
 
 1. **Install dependencies**: `npm install`
 2. **Run the server**: `npm start` or `ts-node index.ts`
-3. **Generate CRUD files**: `npx ts-node bin/cli.ts crud`
+3. **Generate CRUD files**: `npm run create:crud`
 
 ## Configuration Files
 - `tsconfig.json`: TypeScript configuration for development.
@@ -82,7 +83,21 @@ Winston logger is configured for structured logging across the application.
 Refer to `package.json` for project dependencies.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. But ensure to check the licenses of the dependencies used in this project.
+Also, please provide attribution to the author and project if you use this code.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Authors
+- [Radoan Hossain](https://www.linkedin.com/in/revendol/)
+- If you have any questions or feedback, feel free to reach out.
+- Email: `radoan.cse@gmail.com`
+- LinkedIn: [Radoan Hossain](https://www.linkedin.com/in/revendol/)
+- I'm open to collaboration and job opportunities.
+
+## Acknowledgements
+- [TypeScript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [Mongoose](https://mongoosejs.com/)

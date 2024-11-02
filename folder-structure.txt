@@ -1,0 +1,52 @@
+.
+├── bin
+│   ├── templates
+│   │   ├── controller.hbs       # Template for generating controllers
+│   │   ├── repo.hbs             # Template for generating repositories
+│   │   ├── route.hbs            # Template for generating routes
+│   │   ├── service.hbs          # Template for generating services
+│   │   └── validator.hbs        # Template for generating validators
+│   ├── cli.ts                   # CLI script for generating boilerplate code (TypeScript)
+│   ├── cli.js                   # Compiled CLI script for generating boilerplate code (JavaScript)
+│   └── plopfile.js              # Configuration file for Plop, defining the boilerplate generation logic
+│
+├── logs                         # Directory for storing log files
+│
+├── specs                        # Directory for storing test files and configurations
+│
+├── src
+│   ├── app
+│   │   ├── db
+│   │   │   ├── models           # Contains Mongoose models defining data schemas
+│   │   │   └── repos
+│   │   │       ├── Repo.ts      # Base repository class with essential database operations
+│   │   │       └── OtherRepo.ts # Repository extending the base Repo class, includes custom operations
+│   │   │
+│   │   ├── http
+│   │   │   ├── controllers
+│   │   │   │   └── Controller.ts # Base controller class providing basic CRUD operations, extendable for specific APIs with validation support
+│   │   │   ├── routes
+│   │   │   │   └── Route.ts      # Base route class defining default CRUD routes and facilitating new route and middleware registration
+│   │   │   ├── validators
+│   │   │   │   └── Validators.ts # Base validator class for assigning validations to controllers and creating custom validators
+│   │   │   └── middlewares       # Directory for middleware functions used in routes
+│   │   │
+│   │   ├── services
+│   │   │   └── Service.ts        # Base service class, providing core logic and separating business logic from controllers
+│   │   │
+│   │   ├── types                 # Contains type declarations for the project
+│   │   │
+│   │   ├── util                  # Utility functions and helper middleware used throughout the project
+│   │   │
+│   │   └── views                 # HTML files for email templates, PDF generation, and related views
+│   │
+│   ├── pre-start                 # Environmental setup files loaded before the server starts
+│   │
+│   ├── index.ts                  # Main entry point, initializing and starting the server
+│   │
+│   └── server.ts                 # Main application logic, including configurations, routes, and database connections
+│
+├── build.ts                      # TypeScript build configuration
+├── package.json                  # Project metadata, scripts, and dependencies
+├── tsconfig.json                 # TypeScript configuration for development
+└── tsconfig.prod.json            # TypeScript configuration for production builds
