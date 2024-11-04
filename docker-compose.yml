@@ -1,0 +1,65 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_app
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/your_database_name
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - redis
+      - elasticsearch
+    restart: always
+
+  mongo:
+    image: mongo:8.0
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: examplepassword
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+  redis:
+    image: redis:7.0
+    container_name: redis
+    volumes:
+      - redis-data:/data
+    restart: always
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=true  # Enable security for production
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    restart: always
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.9.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    restart: always
+
+volumes:
+  mongo-data:
+  redis-data:
+  es-data:
