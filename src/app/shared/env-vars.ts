@@ -38,5 +38,10 @@ export default {
       }
     }
 
-  }
+  },
+  redis: {
+    enable: process.env.REDIS_ENABLE === 'true',
+    url: (process.env.REDIS_URL ?? 'redis://localhost:6379'),
+    cacheTTL: parseInt(process.env.CACHE_EXPIRY || "3600"),
+  },
 } as const;

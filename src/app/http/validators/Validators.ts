@@ -57,6 +57,14 @@ class Validators {
         ? customRules
         : { ...this.rules[type], ...customRules };
 
+      // If no rules are present, automatically pass validation
+      if (Object.keys(rules).length === 0) {
+        return {
+          hasError: false,
+          message: ErrorMessage.HTTP_CONTINUE,
+        };
+      }
+
       const validation = new Validator(data, rules as Rules);
 
       // Check for validation asynchronously

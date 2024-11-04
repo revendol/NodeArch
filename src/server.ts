@@ -9,6 +9,8 @@ import logger from '@util/logger'; // Updated to use Winston logger
 import BaseRouter from '@routes/api';
 import envVars from '@shared/env-vars';
 import { CustomError } from '@shared/errors';
+import {failure} from "@shared/response";
+import ErrorMessage from "@shared/errorMessage";
 
 class Server {
   public app: express.Application;
@@ -18,6 +20,7 @@ class Server {
     this.configureMiddleware();
     this.connectToDatabase();
     this.configureRoutes();
+    this.configureNotFoundHandling();
     this.configureErrorHandling();
   }
 
@@ -66,6 +69,20 @@ class Server {
     });
   }
 
+  // 404 handler for unmatched routes
+  private configureNotFoundHandling(): void {
+    this.app.use((req: Request, res: Response) => {
+      logger.info(`404 - Not Found - ${req.originalUrl}`);
+      res.status(StatusCodes.NOT_FOUND).json(failure(
+        {
+          message: ErrorMessage.HTTP_NOT_FOUND,
+          errors: `Cannot ${req.method} ${req.originalUrl}`
+        }
+      ));
+      logger.info(`404 - Not Found - ${req.originalUrl}`);
+    });
+  }
+
   private configureErrorHandling(): void {
     // Error handling middleware
     this.app.use((err: Error | CustomError, req: Request, res: Response) => {
@@ -75,7 +92,7 @@ class Server {
       });
       const status = err instanceof CustomError ?
         err.HttpStatus :
-        StatusCodes.INTERNAL_SERVER_ERROR;
+        StatusCodes.NOT_FOUND;
       res.status(status).json({
         error: err.message,
       });
