@@ -1,0 +1,40 @@
+services:
+  app:
+    container_name: node_app_dev
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app                # Mounts local code for live updates
+      - /app/node_modules      # Exclude node_modules to avoid conflicts
+    command: npm run dev       # Runs with nodemon for hot reloading
+    depends_on:
+      - mongo
+      - redis
+      - elasticsearch
+    restart: always
+
+  elasticsearch:
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false  # Disable security for easier local access
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    container_name: elasticsearch_dev
+
+  mongo:
+    container_name: mongo_dev
+    ports:
+      - "27017:27017"
+
+  redis:
+    container_name: redis_dev
+    ports:
+      - "6379:6379"
+
+  kibana:
+    container_name: kibana_dev
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
