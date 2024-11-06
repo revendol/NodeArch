@@ -11,21 +11,10 @@ services:
       - REDIS_PORT=6379
       - ELASTICSEARCH_HOST=http://elasticsearch:9200
     ports:
-      - "3000:3000"
+      - "5500:5500"
     depends_on:
-      - mongo
       - redis
       - elasticsearch
-    restart: always
-
-  mongo:
-    image: mongo:8.0
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: examplepassword
-    volumes:
-      - mongo-data:/data/db
     restart: always
 
   redis:
@@ -60,6 +49,5 @@ services:
     restart: always
 
 volumes:
-  mongo-data:
   redis-data:
   es-data:

@@ -44,4 +44,14 @@ export default {
     url: (process.env.REDIS_URL ?? 'redis://localhost:6379'),
     cacheTTL: parseInt(process.env.CACHE_EXPIRY || "3600"),
   },
+  logging: {
+    driver: (process.env.LOG_DRIVER) ?? 'file', // 'file' or 'elk'
+    logPath: (process.env.LOG_FILE_PATH) ?? 'logs',
+    level: (process.env.LOG_LEVEL) ?? 'info',
+    elasticSearchHost: (process.env.LOG_ELK_HOST) ?? 'http://elasticsearch:9200',
+    esIndexPrefix: (process.env.LOG_ES_INDEX_PREFIX) ?? 'app-logs', // ES index prefix
+    fileName: (process.env.LOG_FILE_NAME) ?? 'app-%DATE%.log', // ES index name pattern
+    datePattern: (process.env.LOG_FILE_DATE_PATTERN) ?? 'YYYY-MM-DD',
+    maxFiles: (process.env.LOG_MAX_FILES) ?? '14d', // ES index
+  }
 } as const;

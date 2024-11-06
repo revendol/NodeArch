@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 
 # Install all dependencies, including dev dependencies
 RUN npm install
-
+RUN npm install -g nodemon
 # Copy the rest of the application code
 COPY . .
 
@@ -27,6 +27,7 @@ COPY package.json package-lock.json ./
 
 # Install only production dependencies
 RUN npm install --only=production
+RUN npm install -g nodemon
 
 # Copy the built application from the previous stage
 COPY --from=build /app/dist /app/dist
@@ -35,7 +36,7 @@ COPY --from=build /app/dist /app/dist
 ENV NODE_ENV=production
 
 # Expose the application port
-EXPOSE 3000
+EXPOSE 5500
 
 # Start the application
 CMD ["node", "-r", "module-alias/register", "./dist", "--env=production"]
