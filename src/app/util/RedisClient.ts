@@ -269,7 +269,10 @@ class RedisClient {
       return lock;
     } catch (error) {
       if (error instanceof Error && error.message.includes("quorum")) {
-        logger.warn(`Failed to acquire lock on ${resource}: quorum not achieved. Check Redis node connectivity.`);
+        logger.warn(
+          `Failed to acquire lock on ${resource}: 
+          quorum not achieved. Check Redis node connectivity.`
+        );
         return null;
       }
       throw error;

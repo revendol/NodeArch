@@ -22,8 +22,7 @@ export default {
     refExp: (process.env.REFRESH_TOKEN_EXP ?? '30 days'),
   },
   mongoDB: {
-    url: 
-    (process.env.MONGO_CONN_URL ?? 
+    url: (process.env.MONGO_CONN_URL ??
       'mongodb://localhost:27017/node_arch')
   },
   mailer: {
@@ -45,6 +44,7 @@ export default {
     cacheTTL: parseInt(process.env.CACHE_EXPIRY || "3600"),
   },
   logging: {
+    enabled: process.env.LOGGING_ENABLED === 'true',
     driver: (process.env.LOG_DRIVER) ?? 'file', // 'file' or 'elk'
     logPath: (process.env.LOG_FILE_PATH) ?? 'logs',
     level: (process.env.LOG_LEVEL) ?? 'info',
@@ -52,6 +52,6 @@ export default {
     esIndexPrefix: (process.env.LOG_ES_INDEX_PREFIX) ?? 'app-logs', // ES index prefix
     fileName: (process.env.LOG_FILE_NAME) ?? 'app-%DATE%.log', // ES index name pattern
     datePattern: (process.env.LOG_FILE_DATE_PATTERN) ?? 'YYYY-MM-DD',
-    maxFiles: (process.env.LOG_MAX_FILES) ?? '14d', // ES index
+    maxFiles: (process.env.LOG_MAX_FILES) ?? '14d',
   }
 } as const;

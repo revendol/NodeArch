@@ -87,10 +87,13 @@ class Controller<T> {
   }
 
   public async add(req: Request, res: Response): Promise<Response> {
-    if(Object.keys(req.body).length === 0) {
+    if(Object.keys(req.body as Partial<T>).length === 0) {
       return res
         .status(StatusCodes.BAD_REQUEST)
-        .json(this.failure(ErrorMessage.HTTP_BAD_REQUEST, { error: "Request body cannot be empty." }));
+        .json(this.failure(
+          ErrorMessage.HTTP_BAD_REQUEST,
+          { error: "Request body cannot be empty." }
+        ));
     }
     const rateLimitKey = this.getCacheKey(`rate_limit_add:${req.ip ?? '0.0.0.0'}`);
     if (!await this.handleRateLimit(rateLimitKey, 10, 60)) {
@@ -173,7 +176,7 @@ class Controller<T> {
     }
     try {
       const { field, value } = req.params;
-      if(Object.keys(req.body).length === 0) {
+      if(Object.keys(req.body as Partial<T>).length === 0) {
         logger.warn("Edit operation failed, request body is empty", {
           service: this.Service.constructor.name,
           field,
@@ -181,7 +184,10 @@ class Controller<T> {
         });
         return res
           .status(StatusCodes.BAD_REQUEST)
-          .json(this.failure(ErrorMessage.HTTP_BAD_REQUEST, { error: "Request body cannot be empty." }));
+          .json(this.failure(
+            ErrorMessage.HTTP_BAD_REQUEST,
+            { error: "Request body cannot be empty." }
+          ));
       }
       if (this.Validator) {
         const validation = await this.Validator.validate(req.body, ValidationType.EDIT);
